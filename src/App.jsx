@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import CatalogView from './components/CatalogView';
 import DigitalReaderView from './components/DigitalReaderView';
@@ -239,6 +240,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500 selection:text-white">
+      <Analytics />
       
       {/* Top Navbar */}
       <Navbar

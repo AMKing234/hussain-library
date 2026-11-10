@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import {
   Search,
   X,
@@ -177,6 +178,7 @@ export default function AdminDashboardApp() {
   if (!currentUser || currentUser.role !== 'admin') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#120824] via-[#1a0e33] to-[#0d0517] flex flex-col justify-between text-white relative overflow-hidden select-none">
+        <Analytics />
         {/* Ambient background glows */}
         <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#D9A441]/10 rounded-full blur-3xl pointer-events-none" />
@@ -330,6 +332,7 @@ export default function AdminDashboardApp() {
 
   return (
     <div className="min-h-screen bg-[#F5F3FF] flex font-sans antialiased text-slate-800">
+      <Analytics />
       
       {/* Deep Royal Purple Sidebar */}
       <AdminSidebar

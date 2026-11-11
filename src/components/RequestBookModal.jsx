@@ -62,21 +62,21 @@ export default function RequestBookModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-[#131127] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 dark:border-purple-900/30 relative max-h-[90vh] overflow-y-auto transition-colors">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+          className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 dark:bg-purple-950/60 hover:bg-slate-200 dark:hover:bg-purple-900/50 text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center shadow-2xs">
-            <BookPlus className="w-6 h-6 text-[#33216B]" />
+          <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 flex items-center justify-center shadow-2xs">
+            <BookPlus className="w-6 h-6 text-[#33216B] dark:text-purple-300" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-[#17143D]">Request a Book</h2>
-            <p className="text-xs text-slate-500">Can't find a volume in our stacks? Let us procure it for you.</p>
+            <h2 className="text-xl font-bold text-[#17143D] dark:text-white">Request a Book</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Can't find a volume in our stacks? Let us procure it for you.</p>
           </div>
         </div>
 
@@ -99,7 +99,7 @@ export default function RequestBookModal({ isOpen, onClose }) {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
               Book Title <span className="text-rose-500">*</span>
             </label>
             <input
@@ -108,12 +108,12 @@ export default function RequestBookModal({ isOpen, onClose }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Ihya Ulum al-Din, The Road to Mecca, Principles of Economics"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-xs font-medium"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-purple-800/60 bg-white dark:bg-[#1a1636] text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-xs font-medium"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
               Author / Translator / Edition (Optional)
             </label>
             <input
@@ -121,20 +121,20 @@ export default function RequestBookModal({ isOpen, onClose }) {
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               placeholder="e.g. Imam Al-Ghazali / Muhammad Asad"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-xs font-medium"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-purple-800/60 bg-white dark:bg-[#1a1636] text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-xs font-medium"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Format Preference</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Format Preference</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 type="button"
                 onClick={() => setFormat('any')}
                 className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                   format === 'any'
-                    ? 'bg-[#17143D] text-white border-[#17143D]'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                    ? 'bg-[#17143D] dark:bg-purple-700 text-white border-[#17143D] dark:border-purple-700'
+                    : 'bg-white dark:bg-[#1a1636] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-purple-900/40 hover:bg-slate-50 dark:hover:bg-purple-950/50'
                 }`}
               >
                 Any Format
@@ -144,8 +144,8 @@ export default function RequestBookModal({ isOpen, onClose }) {
                 onClick={() => setFormat('digital')}
                 className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   format === 'digital'
-                    ? 'bg-[#33216B] text-white border-[#33216B]'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                    ? 'bg-[#33216B] dark:bg-purple-600 text-white border-[#33216B] dark:border-purple-600'
+                    : 'bg-white dark:bg-[#1a1636] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-purple-900/40 hover:bg-slate-50 dark:hover:bg-purple-950/50'
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5" />
@@ -157,7 +157,7 @@ export default function RequestBookModal({ isOpen, onClose }) {
                 className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   format === 'physical'
                     ? 'bg-[#D9A441] text-slate-950 font-bold border-[#D9A441]'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                    : 'bg-white dark:bg-[#1a1636] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-purple-900/40 hover:bg-slate-50 dark:hover:bg-purple-950/50'
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -168,17 +168,17 @@ export default function RequestBookModal({ isOpen, onClose }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Your Name</label>
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Abdul Maleque"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-xs font-medium"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-purple-800/60 bg-white dark:bg-[#1a1636] text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-xs font-medium"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 Contact Info <span className="text-rose-500">*</span>
               </label>
               <input
@@ -187,19 +187,19 @@ export default function RequestBookModal({ isOpen, onClose }) {
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
                 placeholder="Email or Mobile Phone"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-xs font-medium"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-purple-800/60 bg-white dark:bg-[#1a1636] text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-xs font-medium"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Notes / Special Instructions</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Notes / Special Instructions</label>
             <textarea
               rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="e.g. Needed for research thesis, urgent requirement, or specific publication year"
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-xs font-medium"
+              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 dark:border-purple-800/60 bg-white dark:bg-[#1a1636] text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-xs font-medium"
             />
           </div>
 
@@ -207,7 +207,7 @@ export default function RequestBookModal({ isOpen, onClose }) {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 bg-[#17143D] hover:bg-[#251f5c] text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md shadow-[#17143D]/20 transition-all cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md shadow-[#17143D]/20 transition-all cursor-pointer disabled:opacity-50"
             >
               <Send className="w-3.5 h-3.5 text-[#D9A441]" />
               <span>{submitting ? 'Submitting Request...' : 'Submit Book Request'}</span>

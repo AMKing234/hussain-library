@@ -114,10 +114,10 @@ export default function CatalogView({
     <div className="space-y-6">
       
       {/* Premium Hero Section matching Exact Reference Image */}
-      <section id="section-hero" className="bg-gradient-to-br from-[#FAF8FC] via-[#FFFFFF] to-[#F2EDFF]/40 rounded-3xl p-5 sm:p-8 lg:p-12 border border-slate-200/80 shadow-xs relative overflow-hidden scroll-mt-24">
+      <section id="section-hero" className="bg-gradient-to-br from-[#FAF8FC] via-[#FFFFFF] to-[#F2EDFF]/40 dark:from-[#131127] dark:via-[#17143D] dark:to-[#1a1235] rounded-3xl p-5 sm:p-8 lg:p-12 border border-slate-200/80 dark:border-purple-900/40 shadow-xs relative overflow-hidden scroll-mt-24 transition-colors">
         
         {/* Ambient background glow accents */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#F2EDFF] rounded-full blur-3xl pointer-events-none opacity-60"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#F2EDFF] dark:bg-purple-900/20 rounded-full blur-3xl pointer-events-none opacity-60"></div>
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#D9A441]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
@@ -126,27 +126,27 @@ export default function CatalogView({
           <div className="lg:col-span-7 space-y-4 sm:space-y-5">
             
             {/* Badge: "Digital Book Library" */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] text-[#33216B] text-xs font-semibold border border-[#d8cbf5] shadow-2xs">
-              <BookOpen className="w-3.5 h-3.5 text-[#33216B]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 text-xs font-semibold border border-[#d8cbf5] dark:border-purple-800/60 shadow-2xs">
+              <BookOpen className="w-3.5 h-3.5 text-[#33216B] dark:text-purple-300" />
               <span>Digital Book Library</span>
             </div>
 
             {/* Main Heading: "Hussain Library" */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#17143D] leading-tight sm:leading-[1.08] font-sans">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#17143D] dark:text-white leading-tight sm:leading-[1.08] font-sans">
               Hussain Library
             </h1>
 
             {/* Tagline: "Knowledge Beyond Pages" */}
             <div className="flex items-center gap-3 my-1">
-              <span className="h-[2px] w-10 sm:w-16 bg-[#17143D]/70 rounded-full"></span>
-              <span className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-[#17143D] font-medium tracking-wide">
+              <span className="h-[2px] w-10 sm:w-16 bg-[#17143D]/70 dark:bg-purple-400/60 rounded-full"></span>
+              <span className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-[#17143D] dark:text-purple-200 font-medium tracking-wide">
                 Knowledge Beyond Pages
               </span>
-              <span className="h-[2px] w-10 sm:w-16 bg-[#17143D]/70 rounded-full"></span>
+              <span className="h-[2px] w-10 sm:w-16 bg-[#17143D]/70 dark:bg-purple-400/60 rounded-full"></span>
             </div>
 
             {/* Description */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
               Explore a wide collection of eBooks, study materials, academic resources and rare books. Read, learn and grow — anytime, anywhere.
             </p>
 
@@ -159,14 +159,14 @@ export default function CatalogView({
                   const el = document.getElementById('section-books');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-100 shadow-xs hover:shadow-md hover:border-purple-200 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
+                className="bg-white dark:bg-[#1a1636] rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-purple-900/40 shadow-xs hover:shadow-md hover:border-purple-200 dark:hover:border-purple-600 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] dark:bg-purple-950/80 text-[#33216B] dark:text-purple-300 flex items-center justify-center group-hover:scale-105 transition-transform">
                   <BookOpen className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#17143D]">E-Books</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">(PDF)</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#17143D] dark:text-white">E-Books</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">(PDF)</div>
                 </div>
               </div>
 
@@ -176,14 +176,14 @@ export default function CatalogView({
                   const el = document.getElementById('section-combos');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-100 shadow-xs hover:shadow-md hover:border-purple-200 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
+                className="bg-white dark:bg-[#1a1636] rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-purple-900/40 shadow-xs hover:shadow-md hover:border-purple-200 dark:hover:border-purple-600 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] dark:bg-purple-950/80 text-[#33216B] dark:text-purple-300 flex items-center justify-center group-hover:scale-105 transition-transform">
                   <Layers className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#17143D]">Book</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Combos</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#17143D] dark:text-white">Book</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">Combos</div>
                 </div>
               </div>
 
@@ -193,14 +193,14 @@ export default function CatalogView({
                   const el = document.getElementById('section-books');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-100 shadow-xs hover:shadow-md hover:border-purple-200 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
+                className="bg-white dark:bg-[#1a1636] rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-purple-900/40 shadow-xs hover:shadow-md hover:border-purple-200 dark:hover:border-purple-600 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] dark:bg-purple-950/80 text-[#33216B] dark:text-purple-300 flex items-center justify-center group-hover:scale-105 transition-transform">
                   <ShieldCheck className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#17143D]">Secure</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Access</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#17143D] dark:text-white">Secure</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">Access</div>
                 </div>
               </div>
 
@@ -211,14 +211,14 @@ export default function CatalogView({
                   const el = document.getElementById('section-books');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-100 shadow-xs hover:shadow-md hover:border-purple-200 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
+                className="bg-white dark:bg-[#1a1636] rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-purple-900/40 shadow-xs hover:shadow-md hover:border-purple-200 dark:hover:border-purple-600 hover:-translate-y-0.5 transition-all flex flex-col items-center text-center gap-1.5 sm:gap-2 group cursor-pointer"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F2EDFF] dark:bg-purple-950/80 text-[#33216B] dark:text-purple-300 flex items-center justify-center group-hover:scale-105 transition-transform">
                   <Download className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-[#17143D]">Instant</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Download</div>
+                  <div className="text-xs sm:text-sm font-bold text-[#17143D] dark:text-white">Instant</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">Download</div>
                 </div>
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function CatalogView({
                   const el = document.getElementById('section-books');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto justify-center bg-[#17143D] hover:bg-[#251f5c] text-white font-semibold text-sm px-7 py-3.5 rounded-xl flex items-center gap-2.5 shadow-md shadow-[#17143D]/20 hover:shadow-lg transition-all cursor-pointer"
+                className="w-full sm:w-auto justify-center bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white font-semibold text-sm px-7 py-3.5 rounded-xl flex items-center gap-2.5 shadow-md shadow-[#17143D]/20 hover:shadow-lg transition-all cursor-pointer"
               >
                 <BookOpen className="w-4 h-4 text-[#D9A441]" />
                 <span>Browse Books →</span>
@@ -243,24 +243,24 @@ export default function CatalogView({
                   const el = document.getElementById('section-combos');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto justify-center bg-white hover:bg-slate-50 text-[#17143D] border-2 border-[#17143D] font-semibold text-sm px-6 py-3.5 rounded-xl flex items-center gap-2 shadow-2xs transition-all cursor-pointer"
+                className="w-full sm:w-auto justify-center bg-white dark:bg-[#1a1636] hover:bg-slate-50 dark:hover:bg-[#221c47] text-[#17143D] dark:text-purple-200 border-2 border-[#17143D] dark:border-purple-600 font-semibold text-sm px-6 py-3.5 rounded-xl flex items-center gap-2 shadow-2xs transition-all cursor-pointer"
               >
-                <Tag className="w-4 h-4 text-[#33216B]" />
+                <Tag className="w-4 h-4 text-[#33216B] dark:text-[#D9A441]" />
                 <span>Combo Packs & Bundles</span>
               </button>
             </div>
 
           </div>
 
-          {/* Right Side — Dedicated Cinematic Visual (No nested website preview!) */}
+          {/* Right Side — Dedicated Cinematic Visual */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-[4/3] sm:aspect-square rounded-3xl overflow-hidden shadow-xl border-4 border-white/95 group">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-[4/3] sm:aspect-square rounded-3xl overflow-hidden shadow-xl border-4 border-white/95 dark:border-purple-900/50 group">
               <img
                 src="/hero-illustration.webp"
                 alt="Hussain Library Classical Repository and Reading Atmosphere"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#17143D]/20 via-transparent to-transparent pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#17143D]/20 dark:from-[#0B0A1A]/50 via-transparent to-transparent pointer-events-none"></div>
             </div>
           </div>
 
@@ -271,33 +271,33 @@ export default function CatalogView({
       <div id="section-books" className="scroll-mt-24 space-y-4 pt-2">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F2EDFF] text-[#33216B] text-xs font-semibold mb-1">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 text-xs font-semibold mb-1">
               <BookOpen className="w-3.5 h-3.5" />
               <span>Library Catalog</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#17143D] tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#17143D] dark:text-white tracking-tight">
               Browse Books & Publications
             </h2>
           </div>
-          <span className="text-xs font-medium text-slate-500">
+          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
             {filteredBooks.length} of {books.length} volumes shown
           </span>
         </div>
 
         {/* Search Bar */}
         <div id="catalog-search-bar" className="relative flex items-center">
-        <Search className="absolute left-4 w-5 h-5 text-slate-400" />
+        <Search className="absolute left-4 w-5 h-5 text-slate-400 dark:text-purple-400" />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search by title, author, category, ISBN, or shelf location..."
-          className="w-full pl-12 pr-20 py-3.5 rounded-2xl bg-white text-slate-900 placeholder-slate-400 border border-slate-200/90 focus:outline-none focus:ring-2 focus:ring-[#17143D] text-sm shadow-xs transition-all"
+          className="w-full pl-12 pr-20 py-3.5 rounded-2xl bg-white dark:bg-[#131127] text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 border border-slate-200/90 dark:border-purple-900/40 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600 text-sm shadow-xs transition-all"
         />
         {searchTerm && (
           <button
             onClick={() => setSearchTerm('')}
-            className="absolute right-4 text-xs font-semibold text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+            className="absolute right-4 text-xs font-semibold text-slate-500 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white bg-slate-100 dark:bg-purple-900/50 hover:bg-slate-200 dark:hover:bg-purple-900 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
           >
             Clear
           </button>
@@ -305,7 +305,7 @@ export default function CatalogView({
       </div>
 
       {/* Filter and Control Bar (Touch-friendly & Responsive) */}
-      <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-xs border border-slate-200/80 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
+      <div className="bg-white dark:bg-[#131127] rounded-2xl p-3 sm:p-4 shadow-xs border border-slate-200/80 dark:border-purple-900/40 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 transition-colors">
         
         {/* Type Filter Chips (Horizontal swipe on mobile) */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 md:pb-0 text-xs">
@@ -313,8 +313,8 @@ export default function CatalogView({
             onClick={() => setTypeFilter('all')}
             className={`px-4 py-2 rounded-xl font-bold whitespace-nowrap transition-all cursor-pointer ${
               typeFilter === 'all'
-                ? 'bg-[#17143D] text-white shadow-xs'
-                : 'text-slate-600 hover:bg-slate-100'
+                ? 'bg-[#17143D] dark:bg-purple-700 text-white shadow-xs'
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-purple-950/50'
             }`}
           >
             All Collections ({books.length})
@@ -323,8 +323,8 @@ export default function CatalogView({
             onClick={() => setTypeFilter('digital')}
             className={`px-4 py-2 rounded-xl font-bold whitespace-nowrap flex items-center gap-1.5 transition-all cursor-pointer ${
               typeFilter === 'digital'
-                ? 'bg-[#33216B] text-white shadow-xs'
-                : 'text-slate-600 hover:bg-slate-100'
+                ? 'bg-[#33216B] dark:bg-purple-600 text-white shadow-xs'
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-purple-950/50'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -335,7 +335,7 @@ export default function CatalogView({
             className={`px-4 py-2 rounded-xl font-bold whitespace-nowrap flex items-center gap-1.5 transition-all cursor-pointer ${
               typeFilter === 'physical'
                 ? 'bg-[#D9A441] text-slate-950 font-bold shadow-xs'
-                : 'text-slate-600 hover:bg-slate-100'
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-purple-950/50'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -344,14 +344,14 @@ export default function CatalogView({
         </div>
 
         {/* Category & Availability Dropdowns */}
-        <div className="flex items-center gap-3 justify-between sm:justify-end flex-wrap sm:flex-nowrap pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+        <div className="flex items-center gap-3 justify-between sm:justify-end flex-wrap sm:flex-nowrap pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-purple-900/30">
           {/* Category Filter */}
-          <div className="flex items-center gap-1 text-xs text-slate-500">
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
+          <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+            <Filter className="w-3.5 h-3.5 text-slate-400 dark:text-purple-400" />
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-xl px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#17143D] font-medium cursor-pointer"
+              className="bg-slate-50 dark:bg-purple-950/50 border border-slate-200 dark:border-purple-800/60 text-slate-700 dark:text-slate-200 text-xs rounded-xl px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#17143D] dark:focus:ring-purple-600 font-medium cursor-pointer"
             >
               <option value="all">All Categories</option>
               {categories.map((c) => (
@@ -361,12 +361,12 @@ export default function CatalogView({
           </div>
 
           {/* Available copies toggle */}
-          <label className="flex items-center gap-2 text-xs text-slate-600 cursor-pointer select-none">
+          <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 cursor-pointer select-none">
             <input
               type="checkbox"
               checked={availableOnly}
               onChange={(e) => setAvailableOnly(e.target.checked)}
-              className="rounded text-[#17143D] focus:ring-[#17143D] border-slate-300"
+              className="rounded text-[#17143D] dark:text-purple-600 focus:ring-[#17143D] border-slate-300 dark:border-slate-700 dark:bg-slate-900"
             />
             <span className="font-medium">In-Stock Only</span>
           </label>
@@ -377,21 +377,21 @@ export default function CatalogView({
       {/* Books Display */}
       {loading ? (
         <div className="py-12 sm:py-16 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-3 border-[#17143D] border-t-transparent"></div>
-          <p className="mt-3 text-xs sm:text-sm text-slate-500 font-medium">Connecting to library catalog...</p>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-3 border-[#17143D] dark:border-purple-400 border-t-transparent"></div>
+          <p className="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Connecting to library catalog...</p>
         </div>
       ) : filteredBooks.length === 0 ? (
-        /* Compact, Premium Empty State matching Phase 8 */
-        <div className="bg-gradient-to-b from-white to-[#FAF8FC] rounded-3xl p-6 sm:p-10 text-center border border-slate-200/80 shadow-xs max-w-lg mx-auto my-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center mx-auto mb-3 shadow-2xs">
-            <BookOpen className="w-7 h-7 text-[#33216B]" />
+        /* Compact, Premium Empty State */
+        <div className="bg-gradient-to-b from-white to-[#FAF8FC] dark:from-[#131127] dark:to-[#17143D] rounded-3xl p-6 sm:p-10 text-center border border-slate-200/80 dark:border-purple-900/40 shadow-xs max-w-lg mx-auto my-6">
+          <div className="w-14 h-14 rounded-2xl bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 flex items-center justify-center mx-auto mb-3 shadow-2xs">
+            <BookOpen className="w-7 h-7 text-[#33216B] dark:text-purple-300" />
           </div>
 
-          <h3 className="text-lg sm:text-xl font-bold text-[#17143D] mb-1.5">
+          <h3 className="text-lg sm:text-xl font-bold text-[#17143D] dark:text-white mb-1.5">
             {books.length === 0 ? 'Welcome to Hussain Library' : 'No Matching Titles Found'}
           </h3>
 
-          <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mb-4 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-4 leading-relaxed">
             {books.length === 0
               ? 'Our catalog is currently in active curation by the administrator. Physical editions and digital publications will appear here as soon as they are added.'
               : 'No volumes matched your search or category filter. Try clearing your query to view the full library collection.'}
@@ -406,7 +406,7 @@ export default function CatalogView({
                   setTypeFilter('all');
                   setAvailableOnly(false);
                 }}
-                className="px-4 py-2 bg-[#17143D] text-white text-xs font-semibold rounded-xl hover:bg-[#251f5c] transition-all cursor-pointer"
+                className="px-4 py-2 bg-[#17143D] dark:bg-purple-700 text-white text-xs font-semibold rounded-xl hover:bg-[#251f5c] dark:hover:bg-purple-600 transition-all cursor-pointer"
               >
                 Clear All Filters
               </button>
@@ -415,7 +415,7 @@ export default function CatalogView({
                 onClick={() => {
                   if (onOpenOffers) onOpenOffers();
                 }}
-                className="px-4 py-2 bg-[#F2EDFF] text-[#33216B] border border-[#d8cbf5] text-xs font-semibold rounded-xl hover:bg-[#e8dffd] transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2 bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 border border-[#d8cbf5] dark:border-purple-800/60 text-xs font-semibold rounded-xl hover:bg-[#e8dffd] dark:hover:bg-purple-900/60 transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <Tag className="w-3.5 h-3.5" />
                 <span>Explore Reading Privileges</span>
@@ -426,7 +426,7 @@ export default function CatalogView({
               onClick={() => {
                 if (onOpenRequestBook) onOpenRequestBook();
               }}
-              className="px-4 py-2 bg-[#17143D] text-white text-xs font-semibold rounded-xl hover:bg-[#251f5c] transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
+              className="px-4 py-2 bg-[#17143D] dark:bg-purple-700 text-white text-xs font-semibold rounded-xl hover:bg-[#251f5c] dark:hover:bg-purple-600 transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
             >
               <BookPlus className="w-3.5 h-3.5 text-[#D9A441]" />
               <span>Request a Book</span>
@@ -447,7 +447,7 @@ export default function CatalogView({
             return (
               <div
                 key={book.id}
-                className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col group"
+                className="bg-white dark:bg-[#131127] rounded-2xl border border-slate-200/90 dark:border-purple-900/30 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col group"
               >
                 {/* Book Cover Area */}
                 <div
@@ -487,13 +487,13 @@ export default function CatalogView({
                     )}
                   </div>
 
-                  {/* Wishlist Heart Button (Bagisto style) */}
+                  {/* Wishlist Heart Button */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       onToggleWishlist(book.id);
                     }}
-                    className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-sm transition-colors"
+                    className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white backdrop-blur-sm transition-colors cursor-pointer"
                     title={wishlist.includes(book.id) ? "Remove from Wishlist" : "Save to Wishlist"}
                   >
                     <Heart className={`w-3.5 h-3.5 ${wishlist.includes(book.id) ? 'fill-red-500 text-red-500' : 'text-slate-300'}`} />
@@ -518,27 +518,27 @@ export default function CatalogView({
                   <div>
                     <h3
                       onClick={() => onOpenDetail(book)}
-                      className="font-bold text-slate-900 text-sm line-clamp-1 group-hover:text-indigo-600 transition-colors cursor-pointer"
+                      className="font-bold text-slate-900 dark:text-slate-100 text-sm line-clamp-1 group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors cursor-pointer"
                       title={book.title}
                     >
                       {book.title}
                     </h3>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5 line-clamp-1">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5 line-clamp-1">
                       by {book.author}
                     </p>
 
                     {/* Physical shelf information */}
                     {isPhysical && (
-                      <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                        <span className="text-slate-500 flex items-center gap-1">
+                      <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-purple-900/20 flex items-center justify-between text-[11px]">
+                        <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1">
                           <MapPin className="w-3 h-3 text-amber-600 flex-shrink-0" />
-                          <span className="font-mono text-slate-700 font-medium truncate max-w-[110px]" title={book.shelf_location || 'Main Stacks'}>
+                          <span className="font-mono text-slate-700 dark:text-slate-300 font-medium truncate max-w-[110px]" title={book.shelf_location || 'Main Stacks'}>
                             {book.shelf_location || 'Main Stacks'}
                           </span>
                         </span>
 
                         <span className={`font-semibold px-1.5 py-0.5 rounded text-[10px] ${
-                          isAvailable ? 'text-emerald-700 bg-emerald-50' : 'text-red-700 bg-red-50'
+                          isAvailable ? 'text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60' : 'text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/60'
                         }`}>
                           {isAvailable ? `${book.available_copies}/${book.total_copies} Avail` : 'Out of Stock'}
                         </span>
@@ -547,8 +547,8 @@ export default function CatalogView({
 
                     {/* Digital details */}
                     {isDigital && (
-                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                        <span className="uppercase font-semibold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded text-[10px]">
+                      <div className="mt-2 pt-2 border-t border-slate-100 dark:border-purple-900/20 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                        <span className="uppercase font-semibold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/50 px-1.5 py-0.5 rounded text-[10px]">
                           {book.file_format || 'PDF'}
                         </span>
                         <span>{book.read_count || 0} reads</span>
@@ -557,11 +557,11 @@ export default function CatalogView({
                   </div>
 
                   {/* Card Actions */}
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 flex-wrap">
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-purple-900/30 flex items-center gap-1.5 flex-wrap">
                     <button
                       onClick={() => onOpenDetail(book)}
                       title="View details"
-                      className="flex-1 py-1.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-colors"
+                      className="flex-1 py-1.5 px-2 bg-slate-100 dark:bg-purple-950/60 hover:bg-slate-200 dark:hover:bg-purple-900/50 text-slate-700 dark:text-purple-200 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition-colors cursor-pointer"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>Details</span>
@@ -571,7 +571,7 @@ export default function CatalogView({
                       <button
                         onClick={() => onAddToCart(book)}
                         title="Add to library cart"
-                        className="py-1.5 px-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors border border-indigo-200"
+                        className="py-1.5 px-2.5 bg-indigo-50 dark:bg-purple-900/30 hover:bg-indigo-100 dark:hover:bg-purple-800/40 text-indigo-700 dark:text-purple-300 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors border border-indigo-200 dark:border-purple-700 cursor-pointer"
                       >
                         <ShoppingBag className="w-3.5 h-3.5" />
                         <span>+ Cart</span>
@@ -582,7 +582,7 @@ export default function CatalogView({
                       <button
                         onClick={() => onOpenReader(book)}
                         title="Read online now"
-                        className="py-1.5 px-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1 shadow-sm transition-colors"
+                        className="py-1.5 px-2.5 bg-indigo-600 dark:bg-purple-600 hover:bg-indigo-700 dark:hover:bg-purple-500 text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1 shadow-sm transition-colors cursor-pointer"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Read</span>
@@ -593,7 +593,7 @@ export default function CatalogView({
                       <button
                         onClick={() => onOpenReserve(book)}
                         title="Reserve physical copy"
-                        className="py-1.5 px-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-xs flex items-center justify-center gap-1 shadow-sm transition-colors"
+                        className="py-1.5 px-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-xs flex items-center justify-center gap-1 shadow-sm transition-colors cursor-pointer"
                       >
                         <Calendar className="w-3.5 h-3.5" />
                         <span>Reserve</span>
@@ -615,14 +615,14 @@ export default function CatalogView({
       <section id="section-categories" className="pt-8 sm:pt-12 scroll-mt-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F2EDFF] text-[#33216B] text-xs font-semibold mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 text-xs font-semibold mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Curated Collections</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#17143D] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#17143D] dark:text-white tracking-tight">
               Popular Categories
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
               Explore volumes grouped by scholarship, discipline, and historical era.
             </p>
           </div>
@@ -633,7 +633,7 @@ export default function CatalogView({
                 const el = document.getElementById('section-books');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-xs font-bold text-[#33216B] hover:text-[#17143D] flex items-center gap-1 self-start sm:self-auto cursor-pointer"
+              className="text-xs font-bold text-[#33216B] dark:text-purple-300 hover:text-[#17143D] dark:hover:text-white flex items-center gap-1 self-start sm:self-auto cursor-pointer"
             >
               <span>View All Categories</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -642,12 +642,12 @@ export default function CatalogView({
         </div>
 
         {categories.length === 0 ? (
-          <div className="bg-white rounded-3xl p-8 border border-slate-200/80 text-center max-w-xl mx-auto shadow-2xs">
-            <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center mx-auto mb-3 shadow-2xs">
-              <LayoutGrid className="w-6 h-6 text-[#33216B]" />
+          <div className="bg-white dark:bg-[#131127] rounded-3xl p-8 border border-slate-200/80 dark:border-purple-900/30 text-center max-w-xl mx-auto shadow-2xs">
+            <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 flex items-center justify-center mx-auto mb-3 shadow-2xs">
+              <LayoutGrid className="w-6 h-6 text-[#33216B] dark:text-purple-300" />
             </div>
-            <h3 className="text-base font-bold text-[#17143D] mb-1">No Categories Added Yet</h3>
-            <p className="text-xs text-slate-500 mb-5 leading-relaxed">
+            <h3 className="text-base font-bold text-[#17143D] dark:text-white mb-1">No Categories Added Yet</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-5 leading-relaxed">
               Curated book collections and academic subjects will appear here as the catalog expands.
             </p>
             <button
@@ -655,7 +655,7 @@ export default function CatalogView({
                 const el = document.getElementById('section-books');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer"
             >
               <span>Explore All Books</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -673,19 +673,19 @@ export default function CatalogView({
                     const el = document.getElementById('section-books');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-purple-300 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between group"
+                  className="bg-white dark:bg-[#131127] rounded-2xl p-4 border border-slate-200/80 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#F2EDFF] text-[#33216B] shadow-2xs flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 shadow-2xs flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                       <LayoutGrid className="w-5 h-5" />
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm text-[#17143D] leading-snug mb-1">
+                    <h3 className="font-bold text-xs sm:text-sm text-[#17143D] dark:text-white leading-snug mb-1">
                       {cat}
                     </h3>
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[10px] font-semibold text-slate-400">
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-purple-900/20 flex items-center justify-between text-[10px] font-semibold text-slate-400 dark:text-slate-500">
                     <span>{matchingCount} {matchingCount === 1 ? 'Volume' : 'Volumes'}</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform text-[#33216B]" />
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform text-[#33216B] dark:text-purple-400" />
                   </div>
                 </div>
               );
@@ -709,20 +709,20 @@ export default function CatalogView({
       {/* 3. REQUEST BOOK PROMINENT BANNER (Reader Acquisition)                   */}
       {/* ========================================================================= */}
       <section id="section-request-book" className="pt-8 sm:pt-10 scroll-mt-24">
-        <div className="bg-gradient-to-r from-[#FAF8FC] via-[#F2EDFF] to-white rounded-3xl p-6 sm:p-8 border border-[#d8cbf5] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
+        <div className="bg-gradient-to-r from-[#FAF8FC] via-[#F2EDFF] to-white dark:from-[#131127] dark:via-[#1c183a] dark:to-[#131127] rounded-3xl p-6 sm:p-8 border border-[#d8cbf5] dark:border-purple-900/40 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#17143D] text-[#D9A441] flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-14 h-14 rounded-2xl bg-[#17143D] dark:bg-purple-900 text-[#D9A441] flex items-center justify-center shadow-md flex-shrink-0">
               <BookPlus className="w-7 h-7" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-1 text-[11px] font-bold text-[#33216B] uppercase tracking-wider mb-1">
+              <div className="inline-flex items-center gap-1 text-[11px] font-bold text-[#33216B] dark:text-purple-300 uppercase tracking-wider mb-1">
                 <Sparkles className="w-3 h-3 text-[#D9A441]" />
                 <span>Custom Reader Acquisition</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-[#17143D]">
+              <h3 className="text-lg sm:text-xl font-extrabold text-[#17143D] dark:text-white">
                 Looking for a Specific Book or Rare Manuscript?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-xl mt-1 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mt-1 leading-relaxed">
                 If the volume you need is not yet in our catalog, submit a request. Our acquisitions team reviews every entry and procures copies for library members.
               </p>
             </div>
@@ -731,7 +731,7 @@ export default function CatalogView({
             onClick={() => {
               if (onOpenRequestBook) onOpenRequestBook();
             }}
-            className="w-full md:w-auto px-6 py-3.5 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2.5 shadow-md shadow-[#17143D]/15 transition-all whitespace-nowrap cursor-pointer flex-shrink-0"
+            className="w-full md:w-auto px-6 py-3.5 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2.5 shadow-md shadow-[#17143D]/15 transition-all whitespace-nowrap cursor-pointer flex-shrink-0"
           >
             <BookPlus className="w-4 h-4 text-[#D9A441]" />
             <span>Request a Book Now →</span>
@@ -743,56 +743,56 @@ export default function CatalogView({
       {/* 4. ABOUT HUSSAIN LIBRARY SECTION                                         */}
       {/* ========================================================================= */}
       <section id="section-about" className="pt-10 sm:pt-14 scroll-mt-24">
-        <div className="bg-gradient-to-br from-white via-purple-50/40 to-white rounded-3xl p-6 sm:p-10 border border-purple-100 shadow-sm">
+        <div className="bg-gradient-to-br from-white via-purple-50/40 to-white dark:from-[#131127] dark:via-[#1c173d]/50 dark:to-[#131127] rounded-3xl p-6 sm:p-10 border border-purple-100 dark:border-purple-900/40 shadow-sm transition-colors">
           {/* Header */}
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EDFF] text-[#33216B] text-xs font-bold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 text-xs font-bold mb-3">
               <Sparkles className="w-3.5 h-3.5 text-[#D9A441]" />
               <span>ABOUT HUSSAIN LIBRARY</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#17143D] tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#17143D] dark:text-white tracking-tight">
               Preserving Authentic Wisdom, Empowering Curious Minds
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
               Founded on the conviction that profound knowledge transcends time and physical boundaries, Hussain Library is a modern hybrid repository uniting classical scholarly heritage with seamless digital access.
             </p>
           </div>
 
           {/* Grid of Key Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
-              <div className="w-10 h-10 rounded-xl bg-purple-100 text-[#33216B] flex items-center justify-center mb-3.5 font-bold">
-                <BookOpen className="w-5 h-5 text-purple-700" />
+            <div className="bg-white dark:bg-[#181433] p-5 rounded-2xl border border-slate-200/80 dark:border-purple-900/40 shadow-xs hover:border-purple-300 dark:hover:border-purple-600 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950 text-[#33216B] dark:text-purple-300 flex items-center justify-center mb-3.5 font-bold">
+                <BookOpen className="w-5 h-5 text-purple-700 dark:text-purple-300" />
               </div>
-              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Curated Heritage & Scholarship</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <h3 className="text-sm font-bold text-[#17143D] dark:text-white mb-1.5">Curated Heritage & Scholarship</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Specialized in authentic Islamic literature, classical commentaries, Hadith sciences, history, ethics, and contemporary academic publications across Arabic, Urdu, English, Bengali, and Hindi.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-3.5 font-bold">
-                <Layers className="w-5 h-5 text-amber-600" />
+            <div className="bg-white dark:bg-[#181433] p-5 rounded-2xl border border-slate-200/80 dark:border-purple-900/40 shadow-xs hover:border-purple-300 dark:hover:border-purple-600 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 flex items-center justify-center mb-3.5 font-bold">
+                <Layers className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               </div>
-              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Dual Reading Experience</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <h3 className="text-sm font-bold text-[#17143D] dark:text-white mb-1.5">Dual Reading Experience</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Enjoy immediate, zero-latency digital PDF reading directly in your web browser, or order beautifully bound physical editions delivered securely straight to your doorstep.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-3.5 font-bold">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+            <div className="bg-white dark:bg-[#181433] p-5 rounded-2xl border border-slate-200/80 dark:border-purple-900/40 shadow-xs hover:border-purple-300 dark:hover:border-purple-600 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-3.5 font-bold">
+                <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Verified Authenticity</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <h3 className="text-sm font-bold text-[#17143D] dark:text-white mb-1.5">Verified Authenticity</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Every volume added to Hussain Library undergoes rigorous vetting to preserve textual integrity, correct translations, and reliable pedagogical source citations.
               </p>
             </div>
           </div>
 
           {/* Custodian & Commitment Card */}
-          <div className="bg-[#17143D] text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="bg-[#17143D] dark:bg-[#1f1947] text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-transparent dark:border-purple-800/40">
             <div className="max-w-2xl">
               <div className="text-[11px] font-bold text-[#D9A441] uppercase tracking-wider mb-1">
                 Custodianship & Mission
@@ -831,16 +831,16 @@ export default function CatalogView({
       {/* 5. NEWSLETTER SUBSCRIPTION SECTION                                       */}
       {/* ========================================================================= */}
       <section id="section-newsletter" className="pt-8 sm:pt-12 scroll-mt-24">
-        <div className="bg-gradient-to-br from-[#FAF8FC] via-white to-[#F2EDFF]/60 rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-xs text-center relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#FAF8FC] via-white to-[#F2EDFF]/60 dark:from-[#131127] dark:via-[#181433] dark:to-[#131127] rounded-3xl p-6 sm:p-10 border border-slate-200/90 dark:border-purple-900/40 shadow-xs text-center relative overflow-hidden transition-colors">
           <div className="max-w-xl mx-auto">
-            <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] text-[#33216B] flex items-center justify-center mx-auto mb-3 shadow-2xs">
-              <Mail className="w-6 h-6 text-[#33216B]" />
+            <div className="w-12 h-12 rounded-2xl bg-[#F2EDFF] dark:bg-purple-950/60 text-[#33216B] dark:text-purple-300 flex items-center justify-center mx-auto mb-3 shadow-2xs">
+              <Mail className="w-6 h-6 text-[#33216B] dark:text-purple-300" />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#17143D] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#17143D] dark:text-white tracking-tight">
               Stay Informed with Hussain Library
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-2 mb-6 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 mb-6 leading-relaxed">
               Subscribe to receive weekly catalog additions, rare manuscript highlights, study bundle discounts, and academic reading lists.
             </p>
 
@@ -868,19 +868,19 @@ export default function CatalogView({
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter your email address..."
-                className="flex-1 px-4 py-3 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#17143D]"
+                className="flex-1 px-4 py-3 rounded-xl bg-white dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#17143D] dark:focus:ring-purple-600"
               />
               <button
                 type="submit"
                 disabled={subscribing}
-                className="px-6 py-3 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md shadow-[#17143D]/20 transition-all cursor-pointer disabled:opacity-50"
+                className="px-6 py-3 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 shadow-md shadow-[#17143D]/20 transition-all cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-4 h-4 text-[#D9A441]" />
                 <span>{subscribing ? 'Subscribing...' : 'Subscribe'}</span>
               </button>
             </form>
 
-            <p className="text-[11px] text-slate-400 mt-3">
+            <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-3">
               We respect your inbox. Unsubscribe anytime with one click.
             </p>
           </div>
@@ -890,21 +890,21 @@ export default function CatalogView({
       {/* ========================================================================= */}
       {/* 6. PROFESSIONAL MULTI-COLUMN FOOTER                                      */}
       {/* ========================================================================= */}
-      <footer className="mt-12 sm:mt-16 pt-10 pb-6 border-t border-slate-200 text-slate-600">
+      <footer className="mt-12 sm:mt-16 pt-10 pb-6 border-t border-slate-200 dark:border-purple-900/30 text-slate-600 dark:text-slate-400 transition-colors">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Col 1: Brand Info */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
               <img src="/logo.jpg" alt="Hussain Library" className="h-10 w-auto object-contain" />
               <div>
-                <div className="text-base font-extrabold text-[#17143D]">HUSSAIN LIBRARY</div>
-                <div className="text-[10px] font-serif italic text-slate-500">Knowledge Beyond Pages</div>
+                <div className="text-base font-extrabold text-[#17143D] dark:text-white">HUSSAIN LIBRARY</div>
+                <div className="text-[10px] font-serif italic text-slate-500 dark:text-slate-400">Knowledge Beyond Pages</div>
               </div>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               A comprehensive hybrid repository dedicated to preserving classical Islamic heritage, academic research publications, and modern study literature.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-[11px] font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-purple-950/60 text-slate-700 dark:text-purple-300 text-[11px] font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>ECC & R.E.A Security Hardened</span>
             </div>
@@ -912,7 +912,7 @@ export default function CatalogView({
 
           {/* Col 2: Navigation Links */}
           <div>
-            <h4 className="text-xs font-bold text-[#17143D] uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[#17143D] dark:text-white uppercase tracking-wider mb-3">
               Navigation
             </h4>
             <ul className="space-y-2 text-xs">
@@ -922,7 +922,7 @@ export default function CatalogView({
                     const el = document.getElementById('section-hero');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#17143D] transition-colors cursor-pointer"
+                  className="hover:text-[#17143D] dark:hover:text-purple-300 transition-colors cursor-pointer"
                 >
                   Home Overview
                 </button>
@@ -933,7 +933,7 @@ export default function CatalogView({
                     const el = document.getElementById('section-books');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#17143D] transition-colors cursor-pointer"
+                  className="hover:text-[#17143D] dark:hover:text-purple-300 transition-colors cursor-pointer"
                 >
                   Books Catalog
                 </button>
@@ -944,7 +944,7 @@ export default function CatalogView({
                     const el = document.getElementById('section-categories');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#17143D] transition-colors cursor-pointer"
+                  className="hover:text-[#17143D] dark:hover:text-purple-300 transition-colors cursor-pointer"
                 >
                   Popular Categories
                 </button>
@@ -955,7 +955,7 @@ export default function CatalogView({
                     const el = document.getElementById('section-combos');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#17143D] transition-colors cursor-pointer"
+                  className="hover:text-[#17143D] dark:hover:text-purple-300 transition-colors cursor-pointer"
                 >
                   Book Combo Packs & Bundles
                 </button>
@@ -965,7 +965,7 @@ export default function CatalogView({
                   onClick={() => {
                     if (onOpenRequestBook) onOpenRequestBook();
                   }}
-                  className="hover:text-[#17143D] transition-colors cursor-pointer text-[#33216B] font-semibold flex items-center gap-1"
+                  className="hover:text-[#17143D] dark:hover:text-purple-300 transition-colors cursor-pointer text-[#33216B] dark:text-purple-300 font-semibold flex items-center gap-1"
                 >
                   <BookPlus className="w-3 h-3 text-[#D9A441]" />
                   <span>Request a Book</span>
@@ -976,48 +976,48 @@ export default function CatalogView({
 
           {/* Col 3: Reader Services */}
           <div>
-            <h4 className="text-xs font-bold text-[#17143D] uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[#17143D] dark:text-white uppercase tracking-wider mb-3">
               Reader Services
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <span className="text-slate-500">In-Browser PDF Reader</span>
+                <span className="text-slate-500 dark:text-slate-400">In-Browser PDF Reader</span>
               </li>
               <li>
-                <span className="text-slate-500">Physical Copy Reservation</span>
+                <span className="text-slate-500 dark:text-slate-400">Physical Copy Reservation</span>
               </li>
               <li>
-                <span className="text-slate-500">Shelf QR & Call-Number System</span>
+                <span className="text-slate-500 dark:text-slate-400">Shelf QR & Call-Number System</span>
               </li>
               <li>
-                <span className="text-slate-500">Member Borrowing Cards</span>
+                <span className="text-slate-500 dark:text-slate-400">Member Borrowing Cards</span>
               </li>
               <li>
-                <span className="text-slate-500">Inter-Library Loan & Requests</span>
+                <span className="text-slate-500 dark:text-slate-400">Inter-Library Loan & Requests</span>
               </li>
             </ul>
           </div>
 
           {/* Col 4: Administrator & Custodian Info */}
           <div>
-            <h4 className="text-xs font-bold text-[#17143D] uppercase tracking-wider mb-3">
+            <h4 className="text-xs font-bold text-[#17143D] dark:text-white uppercase tracking-wider mb-3">
               Administration & Custody
             </h4>
-            <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs">
+            <div className="bg-slate-50 dark:bg-[#181433] rounded-2xl p-4 border border-slate-200/80 dark:border-purple-900/40 space-y-2 text-xs">
               <div>
                 <span className="text-slate-400 block text-[10px]">Chief Custodian</span>
-                <span className="font-bold text-[#17143D]">ABDUL MALEQUE</span>
+                <span className="font-bold text-[#17143D] dark:text-white">ABDUL MALEQUE</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px]">Official Inquiries</span>
                 <a
                   href="mailto:abdulmalequeaby@gmail.com"
-                  className="text-[#33216B] font-medium hover:underline break-all"
+                  className="text-[#33216B] dark:text-purple-400 font-medium hover:underline break-all"
                 >
                   abdulmalequeaby@gmail.com
                 </a>
               </div>
-              <div className="pt-1 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-500">
+              <div className="pt-1 border-t border-slate-200/60 dark:border-purple-900/30 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                 <span>Repository Status</span>
                 <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Active
@@ -1028,7 +1028,7 @@ export default function CatalogView({
         </div>
 
         {/* Bottom copyright line */}
-        <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div className="pt-6 border-t border-slate-200/80 dark:border-purple-900/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 dark:text-slate-500">
           <div>
             © 2026 Hussain Library. All rights reserved. Knowledge Beyond Pages.
           </div>

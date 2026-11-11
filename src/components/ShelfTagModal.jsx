@@ -17,17 +17,17 @@ export default function ShelfTagModal({ book, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="relative bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden">
+      <div className="relative bg-white dark:bg-[#131127] rounded-2xl max-w-lg w-full shadow-2xl border border-slate-100 dark:border-purple-900/30 overflow-hidden transition-colors">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-4 px-6 border-b border-slate-100 bg-slate-900 text-white">
+        <div className="flex items-center justify-between p-4 px-6 border-b border-slate-100 dark:border-purple-900/30 bg-slate-900 dark:bg-[#1a1438] text-white">
           <div className="flex items-center gap-2">
             <QrCode className="w-5 h-5 text-amber-400" />
             <h3 className="font-bold text-base">Printable Shelf & Spine Label</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 dark:hover:bg-purple-900/50 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -35,13 +35,13 @@ export default function ShelfTagModal({ book, onClose }) {
 
         {/* Printable Label Area */}
         <div className="p-6">
-          <div className="text-xs text-slate-500 mb-4">
+          <div className="text-xs text-slate-500 dark:text-slate-400 mb-4">
             Print this standardized label to paste on the book spine or shelf compartment:
           </div>
 
           <div
             id="printable-shelf-tag"
-            className="border-2 border-dashed border-slate-800 rounded-xl p-5 bg-white text-slate-900 space-y-4 shadow-sm"
+            className="border-2 border-dashed border-slate-800 dark:border-purple-700 rounded-xl p-5 bg-white text-slate-900 space-y-4 shadow-sm"
           >
             {/* Header / Brand */}
             <div className="flex items-center justify-between border-b pb-2 border-slate-800">
@@ -101,18 +101,18 @@ export default function ShelfTagModal({ book, onClose }) {
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 px-6 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-          <span className="text-xs text-slate-400">Standard 3" x 4" Tag Format</span>
+        <div className="p-4 px-6 bg-slate-50 dark:bg-[#181433] border-t border-slate-100 dark:border-purple-900/30 flex items-center justify-between">
+          <span className="text-xs text-slate-400 dark:text-slate-500">Standard 3" x 4" Tag Format</span>
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-200/60 text-xs font-medium transition-colors"
+              className="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-purple-950/50 text-xs font-medium transition-colors cursor-pointer"
             >
               Close
             </button>
             <button
               onClick={handlePrint}
-              className="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors"
+              className="px-5 py-2 bg-slate-900 dark:bg-purple-700 hover:bg-slate-800 dark:hover:bg-purple-600 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               <span>Print Label</span>

@@ -113,7 +113,7 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col relative">
+      <div className="bg-white dark:bg-[#131127] w-full max-w-md rounded-3xl shadow-2xl border border-slate-100 dark:border-purple-900/30 overflow-hidden flex flex-col relative transition-colors">
         {/* Top Banner */}
         <div className="bg-gradient-to-r from-[#17143D] via-[#2A1E5C] to-[#3B1F7E] p-6 text-white relative">
           <button
@@ -180,14 +180,14 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
         {/* Content Body */}
         <div className="p-6">
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-2xl flex items-start gap-2.5 text-xs text-red-700 animate-in slide-in-from-top-1">
+            <div className="mb-4 p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-2xl flex items-start gap-2.5 text-xs text-red-700 dark:text-red-300 animate-in slide-in-from-top-1">
               <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
 
           {successMsg && (
-            <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-start gap-2.5 text-xs text-emerald-800 animate-in slide-in-from-top-1">
+            <div className="mb-4 p-3 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 rounded-2xl flex items-start gap-2.5 text-xs text-emerald-800 dark:text-emerald-300 animate-in slide-in-from-top-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>{successMsg}</span>
             </div>
@@ -197,7 +197,7 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
           {mode === 'login' && (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Email or Username
                 </label>
                 <div className="relative">
@@ -208,13 +208,13 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder="name@example.com or username"
-                    className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Password
                 </label>
                 <div className="relative">
@@ -225,12 +225,12 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
                     placeholder="Enter your password"
-                    className="w-full pl-10 pr-10 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-10 py-2.5 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -240,7 +240,7 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                className="w-full py-3 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {loading ? (
                   <>
@@ -255,12 +255,12 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                 )}
               </button>
 
-              <div className="text-center text-xs text-slate-500 pt-2">
+              <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-2">
                 Don't have an account?{' '}
                 <button
                   type="button"
                   onClick={() => setMode('register')}
-                  className="text-purple-700 font-bold hover:underline cursor-pointer"
+                  className="text-purple-700 dark:text-purple-400 font-bold hover:underline cursor-pointer"
                 >
                   Register here
                 </button>
@@ -272,7 +272,7 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
           {mode === 'register' && (
             <form onSubmit={handleRegister} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -283,13 +283,13 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={registerName}
                     onChange={(e) => setRegisterName(e.target.value)}
                     placeholder="e.g. Tariq Ahmad"
-                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Email Address <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -300,13 +300,13 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={registerEmail}
                     onChange={(e) => setRegisterEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Mobile / Phone Number <span className="text-slate-400 font-normal">(Optional)</span>
                 </label>
                 <div className="relative">
@@ -316,13 +316,13 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={registerPhone}
                     onChange={(e) => setRegisterPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Create Password <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -333,12 +333,12 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                     value={registerPassword}
                     onChange={(e) => setRegisterPassword(e.target.value)}
                     placeholder="Min 8 characters (letters & numbers)"
-                    className="w-full pl-10 pr-10 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                    className="w-full pl-10 pr-10 py-2 text-xs bg-slate-50 dark:bg-[#1a1636] border border-slate-200 dark:border-purple-800/60 text-slate-800 dark:text-slate-100 rounded-xl focus:bg-white dark:focus:bg-[#1f1a42] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -348,7 +348,7 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                className="w-full py-3 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
                 {loading ? (
                   <>
@@ -363,12 +363,12 @@ export default function CustomerAuthModal({ isOpen, onClose, onAuthSuccess }) {
                 )}
               </button>
 
-              <div className="text-center text-xs text-slate-500 pt-1">
+              <div className="text-center text-xs text-slate-500 dark:text-slate-400 pt-1">
                 Already registered?{' '}
                 <button
                   type="button"
                   onClick={() => setMode('login')}
-                  className="text-purple-700 font-bold hover:underline cursor-pointer"
+                  className="text-purple-700 dark:text-purple-400 font-bold hover:underline cursor-pointer"
                 >
                   Sign In here
                 </button>

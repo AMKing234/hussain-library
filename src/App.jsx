@@ -12,7 +12,9 @@ import CartModal from './components/CartModal';
 import OffersModal from './components/OffersModal';
 import ContactModal from './components/ContactModal';
 import RequestBookModal from './components/RequestBookModal';
-import { Home, BookOpen, Layers, Tag, User, BookPlus } from 'lucide-react';
+import WishlistModal from './components/WishlistModal';
+import CustomerProfileModal from './components/CustomerProfileModal';
+import { Home, BookOpen, Layers, Tag, User, BookPlus, Sun, Moon } from 'lucide-react';
 
 import {
   api,
@@ -30,6 +32,16 @@ export default function App() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Theme state (light / dark)
+  const [theme, setTheme] = useState(() => localStorage.getItem('hl_theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('hl_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
   // Search & Filter state for catalog
   const [searchTerm, setSearchTerm] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
@@ -44,6 +56,10 @@ export default function App() {
 
   // Customer Auth modal state
   const [authModalOpen, setAuthModalOpen] = useState(false);
+
+  // Wishlist & Profile modal state
+  const [wishlistModalOpen, setWishlistModalOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   // Modals state
   const [bookModalOpen, setBookModalOpen] = useState(false);
@@ -238,7 +254,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#0B0A1A] text-slate-900 dark:text-slate-100 selection:bg-indigo-500 selection:text-white transition-colors duration-300">
       
       {/* Top Navbar */}
       <Navbar
@@ -247,12 +263,15 @@ export default function App() {
         currentUser={currentUser}
         onLogout={handleLogout}
         onOpenAuthModal={() => setAuthModalOpen(true)}
+        onOpenProfile={() => setProfileModalOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
         systemStatus={systemStatus}
         onOpenSpotlight={() => setSpotlightOpen(true)}
         cartCount={cart.length}
         onOpenCart={() => setCartModalOpen(true)}
         wishlistCount={wishlist.length}
-        onOpenWishlist={() => {}}
+        onOpenWishlist={() => setWishlistModalOpen(true)}
         categories={categories}
         onSelectCategory={(cat) => {
           setCategoryFilter(cat);
@@ -312,12 +331,12 @@ export default function App() {
 
       {/* Minimal Footer on non-catalog views */}
       {activeTab !== 'catalog' && (
-        <footer className="bg-white border-t border-slate-200/80 py-6 text-center text-xs text-slate-500">
+        <footer className="bg-white dark:bg-[#131127] border-t border-slate-200/80 dark:border-purple-900/30 py-6 text-center text-xs text-slate-500 dark:text-slate-400 transition-colors">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-2 font-medium text-slate-700">
+            <div className="flex items-center gap-2 font-medium text-slate-700 dark:text-slate-300">
               <span>📚 Hussain Library</span>
               <span>•</span>
-              <span className="text-slate-400">Digital & Physical Repository</span>
+              <span className="text-slate-400 dark:text-slate-500">Digital & Physical Repository</span>
             </div>
             <div className="text-slate-400">
               Clean Initial State (Zero Demo Data) • Running on Local Node.js
@@ -373,26 +392,26 @@ export default function App() {
       {/* About Modal matching Brand */}
       {aboutModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+          <div className="bg-white dark:bg-[#131127] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 dark:border-purple-900/30 relative">
             <button
               onClick={() => setAboutModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-full hover:bg-slate-100 transition-colors"
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-purple-950/40 transition-colors"
             >
               ✕
             </button>
             <div className="text-center mb-6">
               <img src="/logo.jpg" alt="Hussain Library" className="h-16 w-auto mx-auto mb-3 object-contain" />
-              <h3 className="text-2xl font-black text-[#1a2744]">Hussain Library</h3>
-              <p className="text-sm font-serif italic text-slate-600 mt-0.5">— Knowledge Beyond Pages —</p>
+              <h3 className="text-2xl font-black text-[#1a2744] dark:text-white">Hussain Library</h3>
+              <p className="text-sm font-serif italic text-slate-600 dark:text-slate-400 mt-0.5">— Knowledge Beyond Pages —</p>
             </div>
-            <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               <p>
                 Welcome to <strong>Hussain Library</strong>, your premier repository for both rare physical volumes and instant digital publications.
               </p>
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/60 space-y-2 text-xs">
-                <div className="flex justify-between"><span className="text-slate-500">Chief Administrator:</span><span className="font-semibold text-slate-800">ABDUL MALEQUE</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Official Contact:</span><span className="font-semibold text-slate-800">abdulmalequeaby@gmail.com</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Security Architecture:</span><span className="font-semibold text-emerald-600">ECC & R.E.A Hardened</span></div>
+              <div className="bg-slate-50 dark:bg-purple-950/40 p-4 rounded-2xl border border-slate-200/60 dark:border-purple-900/30 space-y-2 text-xs">
+                <div className="flex justify-between"><span className="text-slate-500 dark:text-slate-400">Chief Administrator:</span><span className="font-semibold text-slate-800 dark:text-slate-200">ABDUL MALEQUE</span></div>
+                <div className="flex justify-between"><span className="text-slate-500 dark:text-slate-400">Official Contact:</span><span className="font-semibold text-slate-800 dark:text-slate-200">abdulmalequeaby@gmail.com</span></div>
+                <div className="flex justify-between"><span className="text-slate-500 dark:text-slate-400">Security Architecture:</span><span className="font-semibold text-emerald-600 dark:text-emerald-400">ECC & R.E.A Hardened</span></div>
               </div>
             </div>
             <button
@@ -437,12 +456,30 @@ export default function App() {
         }}
       />
 
+      {/* Wishlist Modal */}
+      <WishlistModal
+        isOpen={wishlistModalOpen}
+        onClose={() => setWishlistModalOpen(false)}
+        wishlistIds={wishlist}
+        books={books}
+        onAddToCart={handleAddToCart}
+        onRemoveFromWishlist={handleToggleWishlist}
+      />
+
+      {/* Customer Profile Modal */}
+      <CustomerProfileModal
+        isOpen={profileModalOpen}
+        onClose={() => setProfileModalOpen(false)}
+        currentUser={currentUser}
+        onLogout={handleLogout}
+      />
+
       {/* Mobile Bottom Navigation Bar (Fixed, Touch-friendly, Safe-Area aware) */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-2xl px-2 py-1.5 flex items-center justify-around text-[11px] font-medium">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#131127]/95 backdrop-blur-md border-t border-slate-200/90 dark:border-purple-900/30 shadow-2xl px-2 py-1.5 flex items-center justify-around text-[11px] font-medium transition-colors">
         <button
           onClick={() => setActiveTab('catalog')}
           className={`flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl transition-all cursor-pointer ${
-            activeTab === 'catalog' ? 'text-[#17143D] font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
+            activeTab === 'catalog' ? 'text-[#17143D] dark:text-purple-300 font-bold bg-[#F2EDFF] dark:bg-purple-950/60' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
         >
           <Home className="w-5 h-5" />
@@ -452,7 +489,7 @@ export default function App() {
         <button
           onClick={() => setActiveTab('reader')}
           className={`flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl transition-all cursor-pointer ${
-            activeTab === 'reader' ? 'text-[#17143D] font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
+            activeTab === 'reader' ? 'text-[#17143D] dark:text-purple-300 font-bold bg-[#F2EDFF] dark:bg-purple-950/60' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
         >
           <BookOpen className="w-5 h-5" />
@@ -462,7 +499,7 @@ export default function App() {
         <button
           onClick={() => setActiveTab('physical')}
           className={`flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl transition-all cursor-pointer ${
-            activeTab === 'physical' ? 'text-[#17143D] font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
+            activeTab === 'physical' ? 'text-[#17143D] dark:text-purple-300 font-bold bg-[#F2EDFF] dark:bg-purple-950/60' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
         >
           <Layers className="w-5 h-5" />
@@ -470,19 +507,20 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => setOffersModalOpen(true)}
-          className="flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl text-slate-500 hover:text-[#17143D] transition-all cursor-pointer"
+          onClick={toggleTheme}
+          className="flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl text-slate-500 dark:text-slate-400 hover:text-[#17143D] dark:hover:text-purple-300 transition-all cursor-pointer"
         >
-          <Tag className="w-5 h-5 text-[#33216B]" />
-          <span>Offers</span>
+          {theme === 'dark' ? <Sun className="w-5 h-5 text-[#D9A441]" /> : <Moon className="w-5 h-5 text-purple-700" />}
+          <span>{theme === 'dark' ? 'Light' : 'Dark'}</span>
         </button>
 
         <button
           onClick={() => {
-            if (!currentUser) setAuthModalOpen(true);
+            if (currentUser) setProfileModalOpen(true);
+            else setAuthModalOpen(true);
           }}
           className={`flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl transition-all cursor-pointer ${
-            currentUser ? 'text-purple-700 font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
+            currentUser ? 'text-purple-700 dark:text-purple-300 font-bold bg-[#F2EDFF] dark:bg-purple-950/60' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
         >
           <User className="w-5 h-5 text-[#D9A441]" />

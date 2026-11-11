@@ -124,22 +124,22 @@ export default function DigitalReaderView({
   // Empty state when no digital books exist
   if (digitalBooks.length === 0) {
     return (
-      <div className="bg-white rounded-3xl p-10 sm:p-16 text-center border border-dashed border-slate-300 shadow-sm max-w-2xl mx-auto my-12">
-        <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4">
+      <div className="bg-white dark:bg-[#131127] rounded-3xl p-10 sm:p-16 text-center border border-dashed border-slate-300 dark:border-purple-900/50 shadow-sm max-w-2xl mx-auto my-12 transition-colors">
+        <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-purple-950/60 text-indigo-600 dark:text-purple-400 flex items-center justify-center mx-auto mb-4">
           <BookOpen className="w-8 h-8 opacity-80" />
         </div>
 
-        <h3 className="text-xl font-bold text-slate-900 mb-2">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
           No Digital Books Cataloged Yet
         </h3>
 
-        <p className="text-sm text-slate-500 max-w-md mx-auto mb-6 leading-relaxed">
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-6 leading-relaxed">
           The digital reading repository is currently updating its public reader catalog. Check back soon or browse physical and hybrid editions in the main catalog.
         </p>
 
         <button
           onClick={onNavigateToCatalog}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#17143D] hover:bg-[#251f5c] text-white rounded-xl text-sm font-semibold shadow-md shadow-[#17143D]/20 transition-all cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#17143D] dark:bg-purple-700 hover:bg-[#251f5c] dark:hover:bg-purple-600 text-white rounded-xl text-sm font-semibold shadow-md shadow-[#17143D]/20 transition-all cursor-pointer"
         >
           <BookOpen className="w-4 h-4" />
           <span>Browse Library Catalog</span>
@@ -149,34 +149,34 @@ export default function DigitalReaderView({
   }
 
   const themeClasses = {
-    paper: 'bg-white text-slate-900 border-slate-200',
+    paper: 'bg-white dark:bg-[#131127] text-slate-900 dark:text-slate-100 border-slate-200 dark:border-purple-900/30',
     night: 'bg-slate-900 text-slate-100 border-slate-800',
-    sepia: 'bg-amber-50 text-amber-950 border-amber-200'
+    sepia: 'bg-amber-50 dark:bg-[#1c1810] text-amber-950 dark:text-amber-200 border-amber-200 dark:border-amber-900/40'
   };
 
   return (
     <div className={`space-y-4 ${isFullscreen ? 'fixed inset-0 z-50 bg-slate-950 p-4 overflow-y-auto' : ''}`}>
       
       {/* Reader Top Controls */}
-      <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#131127] rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-purple-900/30 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 transition-colors">
         
         {/* Book Selector Dropdown */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center flex-shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-indigo-100 dark:bg-purple-950 text-indigo-700 dark:text-purple-300 flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-[11px] font-semibold uppercase text-slate-400">Currently Reading</div>
+            <div className="text-[11px] font-semibold uppercase text-slate-400 dark:text-slate-500">Currently Reading</div>
             <select
               value={selectedBook?.id || ''}
               onChange={(e) => {
                 const book = digitalBooks.find(b => b.id === Number(e.target.value));
                 if (book) setSelectedBook(book);
               }}
-              className="font-bold text-slate-900 text-sm bg-transparent border-none focus:outline-none focus:ring-0 p-0 cursor-pointer"
+              className="font-bold text-slate-900 dark:text-white text-sm bg-transparent border-none focus:outline-none focus:ring-0 p-0 cursor-pointer"
             >
               {digitalBooks.map((b) => (
-                <option key={b.id} value={b.id}>
+                <option key={b.id} value={b.id} className="dark:bg-[#131127] dark:text-white">
                   {b.title} — {b.author} ({b.file_format?.toUpperCase() || 'PDF'})
                 </option>
               ))}
@@ -188,25 +188,25 @@ export default function DigitalReaderView({
         <div className="flex items-center gap-2 self-end md:self-auto flex-wrap">
           {/* Theme toggles for text reader */}
           {isText && (
-            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs gap-1">
+            <div className="flex items-center bg-slate-100 dark:bg-purple-950/60 p-1 rounded-xl text-xs gap-1">
               <button
                 onClick={() => setReadingTheme('paper')}
                 title="Paper White"
-                className={`p-1.5 rounded-lg ${readingTheme === 'paper' ? 'bg-white shadow text-slate-900' : 'text-slate-500'}`}
+                className={`p-1.5 rounded-lg ${readingTheme === 'paper' ? 'bg-white dark:bg-purple-900 shadow text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 <Sun className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setReadingTheme('sepia')}
                 title="Warm Sepia"
-                className={`p-1.5 rounded-lg ${readingTheme === 'sepia' ? 'bg-amber-100 shadow text-amber-900' : 'text-slate-500'}`}
+                className={`p-1.5 rounded-lg ${readingTheme === 'sepia' ? 'bg-amber-100 dark:bg-amber-950 shadow text-amber-900 dark:text-amber-200' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 <Coffee className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setReadingTheme('night')}
                 title="Night Mode"
-                className={`p-1.5 rounded-lg ${readingTheme === 'night' ? 'bg-slate-800 shadow text-white' : 'text-slate-500'}`}
+                className={`p-1.5 rounded-lg ${readingTheme === 'night' ? 'bg-slate-800 shadow text-white' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 <Moon className="w-3.5 h-3.5" />
               </button>
@@ -215,22 +215,22 @@ export default function DigitalReaderView({
 
           {/* Font size toggle for text reader */}
           {isText && (
-            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs gap-1">
+            <div className="flex items-center bg-slate-100 dark:bg-purple-950/60 p-1 rounded-xl text-xs gap-1">
               <button
                 onClick={() => setFontSize('text-sm')}
-                className={`px-2 py-1 rounded-lg ${fontSize === 'text-sm' ? 'bg-white font-bold shadow' : 'text-slate-500'}`}
+                className={`px-2 py-1 rounded-lg ${fontSize === 'text-sm' ? 'bg-white dark:bg-purple-900 font-bold shadow text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 A-
               </button>
               <button
                 onClick={() => setFontSize('text-base')}
-                className={`px-2 py-1 rounded-lg ${fontSize === 'text-base' ? 'bg-white font-bold shadow' : 'text-slate-500'}`}
+                className={`px-2 py-1 rounded-lg ${fontSize === 'text-base' ? 'bg-white dark:bg-purple-900 font-bold shadow text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 A
               </button>
               <button
                 onClick={() => setFontSize('text-lg')}
-                className={`px-2 py-1 rounded-lg ${fontSize === 'text-lg' ? 'bg-white font-bold shadow' : 'text-slate-500'}`}
+                className={`px-2 py-1 rounded-lg ${fontSize === 'text-lg' ? 'bg-white dark:bg-purple-900 font-bold shadow text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}
               >
                 A+
               </button>
@@ -240,10 +240,10 @@ export default function DigitalReaderView({
           {/* Notes & Bookmarks Toggle */}
           <button
             onClick={() => setShowNotesDrawer(!showNotesDrawer)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
               showNotesDrawer
                 ? 'bg-amber-500 text-slate-950 font-bold shadow'
-                : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                : 'bg-slate-100 dark:bg-purple-950/60 hover:bg-slate-200 dark:hover:bg-purple-900/50 text-slate-700 dark:text-slate-300'
             }`}
           >
             <Bookmark className="w-3.5 h-3.5" />
@@ -255,7 +255,7 @@ export default function DigitalReaderView({
             <a
               href={`/api/books/${selectedBook.id}/download`}
               download
-              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 bg-slate-100 dark:bg-purple-950/60 hover:bg-slate-200 dark:hover:bg-purple-900/50 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Download</span>
@@ -265,7 +265,7 @@ export default function DigitalReaderView({
           {/* Fullscreen toggle */}
           <button
             onClick={toggleFullscreen}
-            className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors"
+            className="p-1.5 bg-slate-100 dark:bg-purple-950/60 hover:bg-slate-200 dark:hover:bg-purple-900/50 text-slate-700 dark:text-slate-300 rounded-xl transition-colors cursor-pointer"
             title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}

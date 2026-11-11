@@ -10,6 +10,7 @@ import {
   db,
   hasAdminUser,
   createAdmin,
+  hashPassword,
   verifyPassword,
   validatePasswordStrength,
   updateAdminPassword
@@ -289,8 +290,7 @@ app.post('/api/auth/register', authLimiter, (req, res) => {
     return res.status(400).json({ error: 'An account with this email address already exists.' });
   }
 
-  const salt = crypto.randomBytes(16).toString('hex');
-  const hash = hashPassword(password, salt);
+  const { hash, salt } = hashPassword(password);
 
   try {
     const info = db.prepare(`

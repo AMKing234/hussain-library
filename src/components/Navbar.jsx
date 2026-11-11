@@ -10,12 +10,10 @@ import {
   Search,
   ShoppingBag,
   User,
-  Shield,
   LogOut,
   ChevronDown,
   Menu,
-  X,
-  ExternalLink
+  X
 } from 'lucide-react';
 
 export default function Navbar({
@@ -23,6 +21,7 @@ export default function Navbar({
   setActiveTab,
   currentUser,
   onLogout,
+  onOpenAuthModal,
   systemStatus,
   onOpenSpotlight,
   cartCount = 0,
@@ -35,7 +34,6 @@ export default function Navbar({
   onOpenRequestBook,
   onScrollToSection
 }) {
-  const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (sectionId) => {
@@ -101,16 +99,13 @@ export default function Navbar({
               <span>Books</span>
             </button>
 
-            {/* Categories Section Button & Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => handleNavClick('section-categories')}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-full text-slate-600 hover:text-[#17143D] hover:bg-[#F2EDFF]/60 transition-all cursor-pointer"
-              >
-                <LayoutGrid className="w-4 h-4" />
-                <span>Categories</span>
-              </button>
-            </div>
+            <button
+              onClick={() => handleNavClick('section-categories')}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full text-slate-600 hover:text-[#17143D] hover:bg-[#F2EDFF]/60 transition-all cursor-pointer"
+            >
+              <LayoutGrid className="w-4 h-4" />
+              <span>Categories</span>
+            </button>
 
             <button
               onClick={() => handleNavClick('section-combos')}
@@ -132,13 +127,11 @@ export default function Navbar({
             </button>
 
             <button
-              onClick={() => {
-                if (onOpenAbout) onOpenAbout();
-              }}
+              onClick={() => handleNavClick('section-about')}
               className="flex items-center gap-2 px-4 py-2 rounded-full text-slate-600 hover:text-[#17143D] hover:bg-[#F2EDFF]/60 transition-all cursor-pointer"
             >
               <Info className="w-4 h-4" />
-              <span>About</span>
+              <span>About Library</span>
             </button>
 
             <button
@@ -175,26 +168,34 @@ export default function Navbar({
               </span>
             </button>
 
-            {/* Standalone Admin Portal Button (Port 3010) */}
-            <a
-              href="http://localhost:3010"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-xs bg-[#17143D] hover:bg-[#251f5c] text-white cursor-pointer"
-              title="Open Dedicated Admin Panel on Port 3010"
-            >
-              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D9A441]" />
-              <span className="hidden sm:inline">Admin Portal</span>
-              <span className="sm:hidden text-[11px]">Admin</span>
-            </a>
-
-            {currentUser && (
+            {/* Customer Auth Button: Sign In / Register OR Logged In Profile */}
+            {currentUser ? (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F2EDFF] border border-purple-200/80 text-xs text-[#17143D] font-bold">
+                  <div className="w-6 h-6 rounded-full bg-[#17143D] text-white flex items-center justify-center text-[11px] uppercase font-bold">
+                    {(currentUser.name || currentUser.username || 'U')[0]}
+                  </div>
+                  <span className="hidden sm:inline max-w-[110px] truncate">
+                    {currentUser.name || currentUser.username}
+                  </span>
+                </div>
+                <button
+                  onClick={onLogout}
+                  title="Sign out"
+                  className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors cursor-pointer"
+                >
+                  <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                </button>
+              </div>
+            ) : (
               <button
-                onClick={onLogout}
-                title="Sign out"
-                className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors cursor-pointer"
+                onClick={onOpenAuthModal}
+                className="flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-xs bg-[#17143D] hover:bg-[#251f5c] text-white cursor-pointer"
+                title="Customer Sign In / Register"
               >
-                <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D9A441]" />
+                <span className="hidden sm:inline">Sign In / Register</span>
+                <span className="sm:hidden text-[11px]">Sign In</span>
               </button>
             )}
           </div>
@@ -234,7 +235,7 @@ export default function Navbar({
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-[#F2EDFF] hover:text-[#17143D]"
           >
             <Tag className="w-4 h-4 text-purple-600" />
-            <span>Combo Packs & Custom Bundles</span>
+            <span>Combo Packs & Bundles</span>
           </button>
 
           <button
@@ -248,34 +249,41 @@ export default function Navbar({
             <span>Request a Book</span>
           </button>
 
-          <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenAbout) onOpenAbout();
-              }}
-              className="py-1 px-2 hover:text-[#17143D]"
-            >
-              About
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenContact) onOpenContact();
-              }}
-              className="py-1 px-2 hover:text-[#17143D]"
-            >
-              Contact
-            </button>
-            <a
-              href="http://localhost:3010"
-              target="_blank"
-              rel="noreferrer"
-              className="py-1 px-2 text-purple-700 font-bold flex items-center gap-1"
-            >
-              <span>Admin (3010)</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+          <button
+            onClick={() => handleNavClick('section-about')}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-[#F2EDFF] hover:text-[#17143D]"
+          >
+            <Info className="w-4 h-4 text-purple-600" />
+            <span>About Hussain Library</span>
+          </button>
+
+          <div className="pt-2 border-t border-slate-100">
+            {currentUser ? (
+              <div className="flex items-center justify-between py-2 text-xs">
+                <div className="flex items-center gap-2 font-bold text-slate-800">
+                  <User className="w-4 h-4 text-purple-600" />
+                  <span>{currentUser.name || currentUser.username}</span>
+                </div>
+                <button
+                  onClick={onLogout}
+                  className="flex items-center gap-1 text-red-600 font-bold px-2 py-1 rounded-lg hover:bg-red-50"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenAuthModal) onOpenAuthModal();
+                }}
+                className="w-full py-2.5 bg-[#17143D] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <User className="w-4 h-4 text-[#D9A441]" />
+                <span>Customer Sign In / Register</span>
+              </button>
+            )}
           </div>
         </div>
       )}

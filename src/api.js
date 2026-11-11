@@ -63,6 +63,7 @@ export const api = {
   // System
   getSystemStatus: () => request('/system/status'),
   setupAdmin: (payload) => request('/auth/setup', { method: 'POST', body: JSON.stringify(payload) }),
+  register: (payload) => request('/auth/register', { method: 'POST', body: JSON.stringify(payload) }),
   login: (payload) => request('/auth/login', { method: 'POST', body: JSON.stringify(payload) }),
   getMe: () => request('/auth/me'),
   changePassword: (payload) => request('/auth/change-password', { method: 'POST', body: JSON.stringify(payload) }),

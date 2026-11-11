@@ -272,6 +272,67 @@ app.post('/api/auth/setup', authLimiter, (req, res) => {
   }
 });
 
+// Customer Registration
+app.post('/api/auth/register', authLimiter, (req, res) => {
+  const { name, email, phone, password } = req.body;
+  if (!name || !email || !password) {
+    return res.status(400).json({ error: 'Full name, email, and password are required' });
+  }
+
+  const strengthCheck = validatePasswordStrength(password);
+  if (!strengthCheck.valid) {
+    return res.status(400).json({ error: strengthCheck.error });
+  }
+
+  const existing = db.prepare('SELECT id FROM users WHERE lower(email) = lower(?) OR username = ?').get(email.trim(), email.trim());
+  if (existing) {
+    return res.status(400).json({ error: 'An account with this email address already exists.' });
+  }
+
+  const salt = crypto.randomBytes(16).toString('hex');
+  const hash = hashPassword(password, salt);
+
+  try {
+    const info = db.prepare(`
+      INSERT INTO users (username, password_hash, password_salt, role, name, email)
+      VALUES (?, ?, ?, 'customer', ?, ?)
+    `).run(email.trim(), hash, salt, sanitizeText(name, 100), sanitizeText(email, 100));
+
+    try {
+      const membershipId = 'HL-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+      db.prepare(`
+        INSERT INTO members (membership_id, name, email, phone, status)
+        VALUES (?, ?, ?, ?, 'active')
+      `).run(membershipId, sanitizeText(name, 100), sanitizeText(email, 100), phone ? sanitizeText(phone, 20) : null);
+    } catch (mErr) {
+      // non-fatal
+    }
+
+    const token = jwt.sign(
+      { id: info.lastInsertRowid, username: email.trim(), name: name.trim(), role: 'customer' },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    logActivity(info.lastInsertRowid, email.trim(), 'Customer Registration', `New customer registered: ${name}`, req.ip);
+
+    res.json({
+      success: true,
+      message: 'Account registered successfully',
+      token,
+      user: {
+        id: info.lastInsertRowid,
+        username: email.trim(),
+        name: name.trim(),
+        email: email.trim(),
+        role: 'customer'
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/auth/login', authLimiter, (req, res) => {
   const identifier = (req.body.username || req.body.email || '').trim();
   const password = req.body.password;
@@ -1688,44 +1749,3 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`[Hussain Library] Admin Initialized: ${hasAdminUser() ? 'Yes' : 'No (Setup required on first visit)'}`);
 });
 
-// -------------------------------------------------------------
-// 9. Dedicated Standalone Admin Portal on Port 3010
-// -------------------------------------------------------------
-
-const ADMIN_PORT = process.env.ADMIN_PORT || 3010;
-const adminApp = express();
-adminApp.disable('x-powered-by');
-
-// Forward all API and uploads requests directly to main Express app before body consumption
-adminApp.use((req, res, next) => {
-  if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
-    return app(req, res, next);
-  }
-  next();
-});
-
-// Serve dist assets and admin.html as root SPA on Port 3010
-if (fs.existsSync(distDir)) {
-  const hasAdminHtml = fs.existsSync(path.join(distDir, 'admin.html'));
-  const adminFile = hasAdminHtml ? 'admin.html' : 'index.html';
-
-  // Explicit root route for Port 3010
-  adminApp.get('/', (req, res) => {
-    return res.sendFile(adminFile, { root: distDir });
-  });
-
-  // Serve static assets without auto-serving index.html on root
-  adminApp.use(express.static(distDir, { index: false }));
-
-  // Fallback for all other client routes on Port 3010
-  adminApp.use((req, res, next) => {
-    if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
-      return res.sendFile(adminFile, { root: distDir });
-    }
-    next();
-  });
-}
-
-adminApp.listen(ADMIN_PORT, '0.0.0.0', () => {
-  console.log(`[Hussain Library Admin Portal] Dedicated Admin running on http://localhost:${ADMIN_PORT}`);
-});

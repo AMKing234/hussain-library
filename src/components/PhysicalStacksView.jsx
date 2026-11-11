@@ -18,7 +18,7 @@ export default function PhysicalStacksView({
   onOpenDetail,
   onOpenReserve,
   onOpenShelfTag,
-  onNavigateToAdmin
+  onNavigateToCatalog
 }) {
   const physicalBooks = books.filter(b => b.type === 'physical' || b.type === 'both');
   const [searchTerm, setSearchTerm] = useState('');
@@ -126,15 +126,15 @@ export default function PhysicalStacksView({
           </h3>
 
           <p className="text-sm text-slate-500 max-w-md mx-auto mb-6 leading-relaxed">
-            There are currently no physical books entered in the repository (clean zero-data state). You can add physical books, shelf locations, and copy counts via the Admin Portal.
+            There are currently no physical books listed in this section. You can browse all available books and request new titles directly from the catalog.
           </p>
 
           <button
-            onClick={onNavigateToAdmin}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-sm shadow-md shadow-amber-500/20 transition-all"
+            onClick={onNavigateToCatalog}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#17143D] hover:bg-[#251f5c] text-white font-bold rounded-xl text-sm shadow-md shadow-[#17143D]/20 transition-all cursor-pointer"
           >
-            <PlusCircle className="w-4 h-4" />
-            <span>Add Physical Book in Admin Portal</span>
+            <BookOpen className="w-4 h-4 text-[#D9A441]" />
+            <span>Return to Catalog</span>
           </button>
         </div>
       ) : filtered.length === 0 ? (

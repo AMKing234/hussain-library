@@ -648,17 +648,18 @@ export default function CatalogView({
             </div>
             <h3 className="text-base font-bold text-[#17143D] mb-1">No Categories Added Yet</h3>
             <p className="text-xs text-slate-500 mb-5 leading-relaxed">
-              Categories added by the administrator in the Admin Panel will be displayed here automatically.
+              Curated book collections and academic subjects will appear here as the catalog expands.
             </p>
-            <a
-              href="http://localhost:3010"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-semibold rounded-xl shadow-xs transition-all"
+            <button
+              onClick={() => {
+                const el = document.getElementById('section-books');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#17143D] hover:bg-[#251f5c] text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer"
             >
-              <span>Open Admin Panel (Port 3010)</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+              <span>Explore All Books</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
@@ -739,7 +740,95 @@ export default function CatalogView({
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. NEWSLETTER SUBSCRIPTION SECTION                                       */}
+      {/* 4. ABOUT HUSSAIN LIBRARY SECTION                                         */}
+      {/* ========================================================================= */}
+      <section id="section-about" className="pt-10 sm:pt-14 scroll-mt-24">
+        <div className="bg-gradient-to-br from-white via-purple-50/40 to-white rounded-3xl p-6 sm:p-10 border border-purple-100 shadow-sm">
+          {/* Header */}
+          <div className="max-w-3xl mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EDFF] text-[#33216B] text-xs font-bold mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#D9A441]" />
+              <span>ABOUT HUSSAIN LIBRARY</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#17143D] tracking-tight">
+              Preserving Authentic Wisdom, Empowering Curious Minds
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+              Founded on the conviction that profound knowledge transcends time and physical boundaries, Hussain Library is a modern hybrid repository uniting classical scholarly heritage with seamless digital access.
+            </p>
+          </div>
+
+          {/* Grid of Key Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 text-[#33216B] flex items-center justify-center mb-3.5 font-bold">
+                <BookOpen className="w-5 h-5 text-purple-700" />
+              </div>
+              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Curated Heritage & Scholarship</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Specialized in authentic Islamic literature, classical commentaries, Hadith sciences, history, ethics, and contemporary academic publications across Arabic, Urdu, English, Bengali, and Hindi.
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-3.5 font-bold">
+                <Layers className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Dual Reading Experience</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Enjoy immediate, zero-latency digital PDF reading directly in your web browser, or order beautifully bound physical editions delivered securely straight to your doorstep.
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-purple-300 transition-all">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-3.5 font-bold">
+                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              </div>
+              <h3 className="text-sm font-bold text-[#17143D] mb-1.5">Verified Authenticity</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Every volume added to Hussain Library undergoes rigorous vetting to preserve textual integrity, correct translations, and reliable pedagogical source citations.
+              </p>
+            </div>
+          </div>
+
+          {/* Custodian & Commitment Card */}
+          <div className="bg-[#17143D] text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="text-[11px] font-bold text-[#D9A441] uppercase tracking-wider mb-1">
+                Custodianship & Mission
+              </div>
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
+                "Knowledge is a sacred trust meant to illuminate minds and hearts."
+              </h4>
+              <p className="text-xs text-purple-100/80 leading-relaxed">
+                Under the stewardship of chief custodian <strong>Abdul Maleque</strong>, Hussain Library provides accessible reading resources, student bundle discounts, inter-library requests, and free digital study privileges to scholars and seekers worldwide.
+              </p>
+            </div>
+            <div className="flex-shrink-0 flex items-center gap-3">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('section-combos');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-4 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 text-xs font-bold rounded-xl shadow-sm transition-all cursor-pointer"
+              >
+                Explore Combo Packs
+              </button>
+              <button
+                onClick={() => {
+                  if (onOpenRequestBook) onOpenRequestBook();
+                }}
+                className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
+              >
+                Request a Title
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. NEWSLETTER SUBSCRIPTION SECTION                                       */}
       {/* ========================================================================= */}
       <section id="section-newsletter" className="pt-8 sm:pt-12 scroll-mt-24">
         <div className="bg-gradient-to-br from-[#FAF8FC] via-white to-[#F2EDFF]/60 rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-xs text-center relative overflow-hidden">

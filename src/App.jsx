@@ -3,10 +3,7 @@ import Navbar from './components/Navbar';
 import CatalogView from './components/CatalogView';
 import DigitalReaderView from './components/DigitalReaderView';
 import PhysicalStacksView from './components/PhysicalStacksView';
-import AdminPanel from './components/AdminPanel';
-import BookModal from './components/BookModal';
-import IssueLoanModal from './components/IssueLoanModal';
-import MemberModal from './components/MemberModal';
+import CustomerAuthModal from './components/CustomerAuthModal';
 import ReservationModal from './components/ReservationModal';
 import BookDetailModal from './components/BookDetailModal';
 import ShelfTagModal from './components/ShelfTagModal';
@@ -15,7 +12,7 @@ import CartModal from './components/CartModal';
 import OffersModal from './components/OffersModal';
 import ContactModal from './components/ContactModal';
 import RequestBookModal from './components/RequestBookModal';
-import { Home, BookOpen, Layers, Tag, Shield, BookPlus } from 'lucide-react';
+import { Home, BookOpen, Layers, Tag, User, BookPlus } from 'lucide-react';
 
 import {
   api,
@@ -44,6 +41,9 @@ export default function App() {
 
   // Digital Reader active book
   const [activeReaderBook, setActiveReaderBook] = useState(null);
+
+  // Customer Auth modal state
+  const [authModalOpen, setAuthModalOpen] = useState(false);
 
   // Modals state
   const [bookModalOpen, setBookModalOpen] = useState(false);
@@ -246,6 +246,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         currentUser={currentUser}
         onLogout={handleLogout}
+        onOpenAuthModal={() => setAuthModalOpen(true)}
         systemStatus={systemStatus}
         onOpenSpotlight={() => setSpotlightOpen(true)}
         cartCount={cart.length}
@@ -294,7 +295,7 @@ export default function App() {
             books={books}
             activeBook={activeReaderBook}
             setActiveBook={setActiveReaderBook}
-            onNavigateToAdmin={() => setActiveTab('admin')}
+            onNavigateToCatalog={() => setActiveTab('catalog')}
           />
         )}
 
@@ -304,22 +305,7 @@ export default function App() {
             onOpenDetail={handleOpenDetail}
             onOpenReserve={handleOpenReserve}
             onOpenShelfTag={handleOpenShelfTag}
-            onNavigateToAdmin={() => setActiveTab('admin')}
-          />
-        )}
-
-        {activeTab === 'admin' && (
-          <AdminPanel
-            currentUser={currentUser}
-            onLoginSuccess={handleLoginSuccess}
-            onLogout={handleLogout}
-            systemStatus={systemStatus}
-            refreshSystemStatus={loadSystemStatus}
-            books={books}
-            refreshBooks={loadBooks}
-            onOpenBookModal={handleOpenBookModal}
-            onOpenIssueModal={handleOpenIssueModal}
-            onOpenMemberModal={handleOpenMemberModal}
+            onNavigateToCatalog={() => setActiveTab('catalog')}
           />
         )}
       </main>
@@ -384,43 +370,6 @@ export default function App() {
         />
       )}
 
-      {bookModalOpen && (
-        <BookModal
-          book={editingBook}
-          categories={categories}
-          onClose={() => setBookModalOpen(false)}
-          onSaved={() => {
-            setBookModalOpen(false);
-            loadBooks();
-            loadSystemStatus();
-          }}
-        />
-      )}
-
-      {issueModalOpen && (
-        <IssueLoanModal
-          books={books}
-          members={members}
-          preselectedBook={preselectedLoanBook}
-          onClose={() => setIssueModalOpen(false)}
-          onIssued={() => {
-            setIssueModalOpen(false);
-            loadBooks();
-          }}
-        />
-      )}
-
-      {memberModalOpen && (
-        <MemberModal
-          member={editingMember}
-          onClose={() => setMemberModalOpen(false)}
-          onSaved={() => {
-            setMemberModalOpen(false);
-            loadMembers();
-          }}
-        />
-      )}
-
       {/* About Modal matching Brand */}
       {aboutModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
@@ -479,6 +428,15 @@ export default function App() {
         onClose={() => setRequestBookModalOpen(false)}
       />
 
+      {/* Customer Auth Modal (Login / Register) */}
+      <CustomerAuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        onAuthSuccess={(user) => {
+          setCurrentUserState(user);
+        }}
+      />
+
       {/* Mobile Bottom Navigation Bar (Fixed, Touch-friendly, Safe-Area aware) */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-2xl px-2 py-1.5 flex items-center justify-around text-[11px] font-medium">
         <button
@@ -520,13 +478,15 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => setActiveTab('admin')}
+          onClick={() => {
+            if (!currentUser) setAuthModalOpen(true);
+          }}
           className={`flex flex-col items-center gap-1 py-1.5 px-3 rounded-2xl transition-all cursor-pointer ${
-            activeTab === 'admin' ? 'text-[#17143D] font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
+            currentUser ? 'text-purple-700 font-bold bg-[#F2EDFF]' : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <Shield className="w-5 h-5 text-[#D9A441]" />
-          <span>{currentUser ? 'Admin' : 'Portal'}</span>
+          <User className="w-5 h-5 text-[#D9A441]" />
+          <span>{currentUser ? (currentUser.name ? currentUser.name.split(' ')[0] : 'Account') : 'Sign In'}</span>
         </button>
       </nav>
 

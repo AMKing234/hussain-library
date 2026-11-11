@@ -24,7 +24,7 @@ export default function DigitalReaderView({
   books = [],
   activeBook = null,
   setActiveBook,
-  onNavigateToAdmin
+  onNavigateToCatalog
 }) {
   const digitalBooks = books.filter(b => (b.type === 'digital' || b.type === 'both') && b.file_path);
 
@@ -134,15 +134,15 @@ export default function DigitalReaderView({
         </h3>
 
         <p className="text-sm text-slate-500 max-w-md mx-auto mb-6 leading-relaxed">
-          The digital reading repository currently has no uploaded digital book files. You can upload PDF, EPUB, or TXT manuscripts through the Admin Portal.
+          The digital reading repository is currently updating its public reader catalog. Check back soon or browse physical and hybrid editions in the main catalog.
         </p>
 
         <button
-          onClick={onNavigateToAdmin}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold shadow-md shadow-indigo-600/20 transition-all"
+          onClick={onNavigateToCatalog}
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#17143D] hover:bg-[#251f5c] text-white rounded-xl text-sm font-semibold shadow-md shadow-[#17143D]/20 transition-all cursor-pointer"
         >
-          <PlusCircle className="w-4 h-4" />
-          <span>Upload Digital Book in Admin Portal</span>
+          <BookOpen className="w-4 h-4" />
+          <span>Browse Library Catalog</span>
         </button>
       </div>
     );
